@@ -1,93 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SK SAHANAWAZ AHAMAD | Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    .intro {
-      padding: 2rem;
-      text-align: center;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .project {
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .project img {
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    .project h3 {
-      margin-top: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #222;
-      color: white;
-    }
-    a {
-      color: #0077cc;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SK Sahanawaz Ahamad | React Native Developer</title>
+    <style>
+      :root {
+        --bg-color: #0f0f0f;
+        --text-color: #e0e0e0;
+        --accent: #00d0ff;
+        --card-bg: #1a1a1a;
+      }
 
-  <header>
-    <h1>SK SAHANAWAZ AHAMAD</h1>
-    <p>App Developer | Web Developer | Designer | Freelancer</p>
-  </header>
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
 
-  <section class="intro">
-    <p>Hello! I'm a freelance developer with experience in building modern websites and apps. Here's a collection of my work.</p>
-  </section>
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        animation: fadeInBody 1s ease-in;
+      }
 
-  <section class="projects">
-    <div class="project">
-      <img src="https://via.placeholder.com/300x200" alt="Project 1">
-      <h3>Project Title 1</h3>
-      <p>Short description of the project and what you did.</p>
-      <a href="#">View Project</a>
-    </div>
+      @keyframes fadeInBody {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
 
-    <div class="project">
-      <img src="https://via.placeholder.com/300x200" alt="Project 2">
-      <h3>Project Title 2</h3>
-      <p>Short description of another project.</p>
-      <a href="#">View Project</a>
-    </div>
+      header {
+        text-align: center;
+        padding: 3rem 1rem 2rem;
+        background-color: #111;
+        border-bottom: 1px solid #222;
+      }
 
-    <!-- Add more projects as needed -->
-  </section>
+      header h1 {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin: 0;
+        animation: slideIn 1.2s ease-out;
+      }
 
-  <footer>
-    <p>Contact me: <a href="mailto:sahanawaz26ahamad@gmail.com">sahanawaz26ahamad@gmail.com</a></p>
-  </footer>
+      header p {
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+        color: #aaa;
+        animation: fadeInText 2s ease-in;
+      }
 
-</body>
+      @keyframes slideIn {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      @keyframes fadeInText {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        color: var(--text-color);
+        margin: 0 1rem;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      section {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+
+      h2 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.5rem;
+      }
+
+      .project-card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .project-card h3 {
+        margin-top: 0;
+      }
+
+      .project-card a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+        background: #1e1e1e;
+        border: 1px solid #333;
+        color: #fff;
+        border-radius: 4px;
+      }
+
+      .contact-form button {
+        background: var(--accent);
+        color: #000;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+
+      .contact-form button:hover {
+        background: #00aacc;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #777;
+      }
+
+      @media (max-width: 600px) {
+        nav a {
+          display: block;
+          margin: 0.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SK Sahanawaz Ahamad</h1>
+      <p>React Native Mobile App Developer</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m SK Sahanawaz Ahamad, a React Native developer passionate about
+        building fast, beautiful, and scalable mobile applications. I specialize
+        in cross-platform apps with pixel-perfect UI and native performance.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-card">
+        <h3>Mobile E-Commerce App</h3>
+        <p>
+          Built a full-featured e-commerce application with cart, payments, and
+          product filtering using React Native and Firebase.
+        </p>
+        <a href="#">View Project →</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>
+          Designed and developed a productivity app for tracking tasks,
+          deadlines, and schedules. Integrated Redux for state management.
+        </p>
+        <a href="#">View Project →</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        If you're interested in working together or have a mobile app idea, feel
+        free to reach out.
+      </p>
+      <form
+        class="contact-form"
+        action="mailto:sahanawaz26ahamad@gmail.com"
+        method="POST"
+        enctype="text/plain"
+      >
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>&copy; 2025 Sk Sahanawaz Ahamad. All rights reserved.</footer>
+  </body>
 </html>
