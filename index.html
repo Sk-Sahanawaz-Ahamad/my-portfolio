@@ -1,225 +1,953 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SK Sahanawaz Ahamad | React Native Developer</title>
-    <style>
-      :root {
-        --bg-color: #0f0f0f;
-        --text-color: #e0e0e0;
-        --accent: #00d0ff;
-        --card-bg: #1a1a1a;
-      }
-
-      * {
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: var(--bg-color);
-        color: var(--text-color);
-        animation: fadeInBody 1s ease-in;
-      }
-
-      @keyframes fadeInBody {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      header {
-        text-align: center;
-        padding: 3rem 1rem 2rem;
-        background-color: #111;
-        border-bottom: 1px solid #222;
-      }
-
-      header h1 {
-        font-size: 2.5rem;
-        color: var(--accent);
-        margin: 0;
-        animation: slideIn 1.2s ease-out;
-      }
-
-      header p {
-        font-size: 1.2rem;
-        margin-top: 0.5rem;
-        color: #aaa;
-        animation: fadeInText 2s ease-in;
-      }
-
-      @keyframes slideIn {
-        from { transform: translateY(-30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      @keyframes fadeInText {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      nav {
-        margin-top: 1rem;
-      }
-
-      nav a {
-        color: var(--text-color);
-        margin: 0 1rem;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      nav a:hover {
-        color: var(--accent);
-      }
-
-      section {
-        max-width: 900px;
-        margin: 3rem auto;
-        padding: 0 1.5rem;
-      }
-
-      h2 {
-        color: var(--accent);
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--accent);
-        padding-bottom: 0.5rem;
-      }
-
-      .project-card {
-        background: var(--card-bg);
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        transition: transform 0.3s ease;
-        animation: fadeInUp 1s ease forwards;
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-      }
-
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .project-card h3 {
-        margin-top: 0;
-      }
-
-      .project-card a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        width: 100%;
-        padding: 0.75rem;
-        margin: 0.5rem 0;
-        background: #1e1e1e;
-        border: 1px solid #333;
-        color: #fff;
-        border-radius: 4px;
-      }
-
-      .contact-form button {
-        background: var(--accent);
-        color: #000;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background 0.3s ease;
-      }
-
-      .contact-form button:hover {
-        background: #00aacc;
-      }
-
-      footer {
-        text-align: center;
-        padding: 2rem;
-        font-size: 0.9rem;
-        color: #777;
-      }
-
-      @media (max-width: 600px) {
-        nav a {
-          display: block;
-          margin: 0.5rem 0;
+    <meta
+      name="description"
+      content="SK Sahanawaz Ahamad — Senior React Native Developer with 4+ years of experience building production-grade iOS & Android mobile applications. Based in Kolkata, India."
+    />
+    <meta
+      name="keywords"
+      content="React Native Developer, Mobile App Developer, iOS, Android, Cross Platform, Kolkata, India, SK Sahanawaz Ahamad"
+    />
+    <meta name="author" content="SK Sahanawaz Ahamad" />
+    <meta
+      property="og:title"
+      content="SK Sahanawaz Ahamad | Senior React Native Developer"
+    />
+    <meta
+      property="og:description"
+      content="Senior React Native Developer with 4+ years building production-grade iOS & Android apps."
+    />
+    <meta property="og:type" content="website" />
+    <title>SK Sahanawaz Ahamad | Senior React Native Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersLight = window.matchMedia(
+          "(prefers-color-scheme: light)",
+        ).matches;
+        if (savedTheme === "light" || (!savedTheme && prefersLight)) {
+          document.documentElement.classList.add("light-theme");
         }
-      }
-    </style>
+      })();
+    </script>
   </head>
   <body>
-    <header>
-      <h1>SK Sahanawaz Ahamad</h1>
-      <p>React Native Mobile App Developer</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I’m SK Sahanawaz Ahamad, a React Native developer passionate about
-        building fast, beautiful, and scalable mobile applications. I specialize
-        in cross-platform apps with pixel-perfect UI and native performance.
-      </p>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <div class="project-card">
-        <h3>Mobile E-Commerce App</h3>
-        <p>
-          Built a full-featured e-commerce application with cart, payments, and
-          product filtering using React Native and Firebase.
-        </p>
-        <a href="#">View Project →</a>
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="#hero" class="nav-logo" aria-label="Home"
+          >&lt;SK<span class="logo-dot">.</span>dev/&gt;</a
+        >
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          aria-label="Toggle theme"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="theme-icon-light"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="theme-icon-dark"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="resume.pdf" class="btn-nav-cta" download>&#8595; Resume</a>
+        <button
+          id="hamburger"
+          class="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </nav>
 
-      <div class="project-card">
-        <h3>Task Manager App</h3>
-        <p>
-          Designed and developed a productivity app for tracking tasks,
-          deadlines, and schedules. Integrated Redux for state management.
+    <section id="hero" class="hero-section" aria-label="Hero">
+      <div class="blob blob-1" aria-hidden="true"></div>
+      <div class="blob blob-2" aria-hidden="true"></div>
+      <div class="blob blob-3" aria-hidden="true"></div>
+      <canvas id="particles-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-up delay-1">
+          <span class="status-dot" aria-hidden="true"></span>
+          Available for Opportunities
+        </div>
+        <h1 class="hero-name animate-fade-up delay-2">
+          SK Sahanawaz<br /><span class="gradient-text">Ahamad</span>
+        </h1>
+        <div class="hero-title animate-fade-up delay-3">
+          <span class="title-prefix">&gt;_ </span>
+          <span id="typed-text" aria-live="polite"></span>
+          <span class="cursor-blink" aria-hidden="true">|</span>
+        </div>
+        <p class="hero-sub animate-fade-up delay-4">
+          Building world-class mobile experiences for
+          <strong>iOS &amp; Android</strong>.<br />
+          From architecture to App Store — I own the full stack.
         </p>
-        <a href="#">View Project →</a>
+        <div class="hero-stats animate-fade-up delay-5">
+          <div class="stat">
+            <span class="stat-number">4+</span
+            ><span class="stat-label">Years Exp.</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-number">20+</span
+            ><span class="stat-label">Features Shipped</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-number">2</span
+            ><span class="stat-label">Platforms</span>
+          </div>
+        </div>
+        <div class="hero-actions animate-fade-up delay-6">
+          <a href="resume.pdf" class="btn-primary" download id="btn-resume"
+            >&#8595; Download Resume</a
+          >
+          <a href="#projects" class="btn-secondary" id="btn-projects"
+            >&#128188; View Projects</a
+          >
+          <a href="#contact" class="btn-ghost" id="btn-contact"
+            >&#9993; Contact Me</a
+          >
+        </div>
+      </div>
+      <div class="hero-scroll-hint animate-fade-up delay-6">
+        <span>Scroll</span>
+        <div class="scroll-mouse" aria-hidden="true">
+          <div class="scroll-wheel"></div>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        If you're interested in working together or have a mobile app idea, feel
-        free to reach out.
-      </p>
-      <form
-        class="contact-form"
-        action="mailto:sahanawaz26ahamad@gmail.com"
-        method="POST"
-        enctype="text/plain"
-      >
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    <section id="about" class="section about-section" aria-label="About Me">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">01 / About</span>
+          <h2 class="section-title">Who I Am</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-avatar-wrap reveal delay-1">
+            <div class="avatar-ring" aria-hidden="true"></div>
+            <div class="avatar-box">
+              <img
+                src="profile.jpg"
+                alt="SK Sahanawaz Ahamad"
+                class="avatar-img"
+              />
+              <div class="avatar-glow" aria-hidden="true"></div>
+            </div>
+            <div class="avatar-tag">&#128205; Kolkata, India</div>
+          </div>
+          <div class="about-text reveal delay-2">
+            <p class="about-intro">
+              Hi — I'm <strong>SK Sahanawaz Ahamad</strong>, a Senior React
+              Native Developer with
+              <strong>4+ years of hands-on experience</strong> delivering
+              production-grade mobile applications that reach real users on both
+              <strong>iOS and Android</strong>.
+            </p>
+            <p>
+              I specialize in building
+              <strong>cross-platform mobile applications</strong> that feel
+              native, perform at scale, and are architected to last. From
+              greenfield MVPs to full enterprise-grade platforms, I've taken
+              ideas all the way from initial wireframes to live releases on the
+              <strong>App Store and Google Play</strong>.
+            </p>
+            <p>
+              My work spans
+              <strong
+                >Lifestyle &amp; Wellness, Legal Education, Literary Platforms,
+                E-Commerce, Community, and Outdoor domains</strong
+              >. I care deeply about pixel-perfect UI, smooth animations, and
+              clean, maintainable architecture.
+            </p>
+            <p>
+              I thrive in
+              <strong>Agile, collaborative environments</strong> where I work
+              closely with product managers, designers, and backend engineers to
+              ship experiences users love.
+            </p>
+            <div class="about-chips">
+              <span class="chip">React Native</span
+              ><span class="chip">TypeScript</span
+              ><span class="chip">Redux</span><span class="chip">Firebase</span
+              ><span class="chip">Stripe</span
+              ><span class="chip">Socket.io</span
+              ><span class="chip">App Store</span
+              ><span class="chip">Play Store</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer>&copy; 2025 Sk Sahanawaz Ahamad. All rights reserved.</footer>
+    <section id="skills" class="section skills-section" aria-label="Skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">02 / Skills</span>
+          <h2 class="section-title">Technical Expertise</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap">
+                <span class="skill-emoji">📱</span>
+              </div>
+              <h3>Mobile Dev</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">React Native</span
+              ><span class="skill-tag">Expo</span
+              ><span class="skill-tag">Cross-Platform</span
+              ><span class="skill-tag">Hybrid Apps</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap purple">
+                <span class="skill-emoji">💻</span>
+              </div>
+              <h3>Languages</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">JavaScript</span
+              ><span class="skill-tag primary">TypeScript</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap pink">
+                <span class="skill-emoji">🎨</span>
+              </div>
+              <h3>UI &amp; Animation</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Styled Components</span
+              ><span class="skill-tag primary">React Reanimated</span
+              ><span class="skill-tag">React Navigation</span
+              ><span class="skill-tag">NativeWind</span
+              ><span class="skill-tag">Deep Linking</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap teal">
+                <span class="skill-emoji">⚙️</span>
+              </div>
+              <h3>State Management</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">Redux</span
+              ><span class="skill-tag">Context API</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap orange">
+                <span class="skill-emoji">☁️</span>
+              </div>
+              <h3>APIs &amp; Networking</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">REST APIs</span
+              ><span class="skill-tag">Axios</span
+              ><span class="skill-tag">WebSockets</span
+              ><span class="skill-tag">Socket.io</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap yellow">
+                <span class="skill-emoji">🔥</span>
+              </div>
+              <h3>Firebase</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">Authentication</span
+              ><span class="skill-tag">Cloud Messaging</span
+              ><span class="skill-tag">Realtime DB</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap purple">
+                <span class="skill-emoji">💳</span>
+              </div>
+              <h3>Payments &amp; Auth</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">Stripe</span
+              ><span class="skill-tag">OAuth</span
+              ><span class="skill-tag">Google Login</span
+              ><span class="skill-tag">Apple Login</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap teal">
+                <span class="skill-emoji">🚀</span>
+              </div>
+              <h3>Deployment</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag primary">App Store</span
+              ><span class="skill-tag primary">Google Play</span>
+            </div>
+          </div>
+          <div class="skill-card reveal delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap pink">
+                <span class="skill-emoji">🛠️</span>
+              </div>
+              <h3>Tools &amp; Services</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span
+              ><span class="skill-tag">GitHub</span
+              ><span class="skill-tag">Google Maps SDK</span
+              ><span class="skill-tag primary">Push Notifications</span
+              ><span class="skill-tag">FCM</span
+              ><span class="skill-tag">APNs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="experience"
+      class="section experience-section"
+      aria-label="Experience"
+    >
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">03 / Experience</span>
+          <h2 class="section-title">Career Journey</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-line" aria-hidden="true"></div>
+          <article class="timeline-item reveal delay-1">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card glass-card">
+              <div class="timeline-card-header">
+                <div>
+                  <h3 class="timeline-role">
+                    Senior Software Engineer — React Native
+                  </h3>
+                  <p class="timeline-company">
+                    🏢 Webskitters Technology Solutions Pvt. Ltd.
+                  </p>
+                </div>
+                <div class="timeline-meta">
+                  <span class="timeline-badge">Full-time</span>
+                  <span class="timeline-period">📅 Aug 2021 – Present</span>
+                </div>
+              </div>
+              <ul class="timeline-achievements" role="list">
+                <li>
+                  ✅ Architected and shipped
+                  <strong>production-grade cross-platform apps</strong> across
+                  Lifestyle, Wellness, E-Commerce, Enterprise, Community &amp;
+                  Outdoor domains.
+                </li>
+                <li>
+                  ✅ Designed scalable
+                  <strong>Redux-based state architectures</strong>, reducing bug
+                  surface and improving team velocity across sprints.
+                </li>
+                <li>
+                  ✅ Engineered
+                  <strong>buttery-smooth 60fps UI animations</strong> using
+                  React Reanimated across low-end and high-end devices.
+                </li>
+                <li>
+                  ✅ Integrated
+                  <strong
+                    >Firebase Auth, Cloud Messaging, Stripe payments,
+                    OAuth</strong
+                  >, Apple &amp; Google Login across multiple production apps.
+                </li>
+                <li>
+                  ✅ Built
+                  <strong>real-time communication features</strong> using
+                  Socket.io including live chat and activity feeds.
+                </li>
+                <li>
+                  ✅ Owned
+                  <strong
+                    >end-to-end App Store &amp; Play Store deployment
+                    pipelines</strong
+                  >
+                  — provisioning, certificates, metadata, and release
+                  management.
+                </li>
+                <li>
+                  ✅ Worked directly with international clients in
+                  <strong>Agile/Scrum environments</strong>, consistently
+                  delivering sprint milestones on schedule.
+                </li>
+              </ul>
+              <div class="timeline-tech-row">
+                <span class="tech-pill">React Native</span
+                ><span class="tech-pill">TypeScript</span
+                ><span class="tech-pill">Redux</span
+                ><span class="tech-pill">Firebase</span
+                ><span class="tech-pill">Stripe</span
+                ><span class="tech-pill">Socket.io</span
+                ><span class="tech-pill">Reanimated</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="projects"
+      class="section projects-section"
+      aria-label="Projects"
+    >
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">04 / Projects</span>
+          <h2 class="section-title">Featured Work</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card glass-card reveal delay-1">
+            <div
+              class="project-gradient gradient-cyan"
+              aria-hidden="true"
+            ></div>
+            <div class="project-top">
+              <div class="project-icon">
+                <img
+                  src="alignment_code_icon.png"
+                  alt="The Alignment Code™ Logo"
+                  class="project-icon-img"
+                />
+              </div>
+              <span class="project-domain-badge domain-lifestyle"
+                >Lifestyle &amp; Wellness</span
+              >
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">The Alignment Code™</h3>
+              <p class="project-desc">
+                A comprehensive wellness platform guiding users through curated
+                lifestyle alignment programs with personalized journeys, push
+                notification reminders, and deep linking into specific content
+                modules.
+              </p>
+              <div class="project-features">
+                <div class="project-feature">🔐 Firebase Authentication</div>
+                <div class="project-feature">
+                  🔑 Social Login (Google / Apple)
+                </div>
+                <div class="project-feature">
+                  🔔 Push Notifications (FCM/APNs)
+                </div>
+                <div class="project-feature">
+                  🧭 React Navigation + Deep Linking
+                </div>
+                <div class="project-feature">🚀 iOS &amp; Android Released</div>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-row">
+                <span class="proj-chip">React Native</span
+                ><span class="proj-chip">Firebase</span
+                ><span class="proj-chip">Redux</span
+                ><span class="proj-chip">Deep Linking</span>
+              </div>
+              <span class="project-status-badge">✅ Live</span>
+            </div>
+          </article>
+
+          <article class="project-card glass-card reveal delay-2">
+            <div
+              class="project-gradient gradient-purple"
+              aria-hidden="true"
+            ></div>
+            <div class="project-top">
+              <div class="project-icon">
+                <img
+                  src="luminate_logo.png"
+                  alt="Luminate+ Logo"
+                  class="project-icon-img"
+                />
+              </div>
+              <span class="project-domain-badge domain-legal"
+                >Legal Education</span
+              >
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Luminate+</h3>
+              <p class="project-desc">
+                An enterprise-grade legal education platform with SSO
+                authentication, tiered Stripe subscription management, and
+                performance-optimized content delivery for legal professionals
+                and students.
+              </p>
+              <div class="project-features">
+                <div class="project-feature">💳 Stripe Subscription System</div>
+                <div class="project-feature">🔑 SSO Authentication</div>
+                <div class="project-feature">🏢 Enterprise Feature Set</div>
+                <div class="project-feature">⚡ Performance Optimization</div>
+                <div class="project-feature">🌿 Complete SDLC Ownership</div>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-row">
+                <span class="proj-chip">React Native</span
+                ><span class="proj-chip">Stripe</span
+                ><span class="proj-chip">SSO</span
+                ><span class="proj-chip">TypeScript</span>
+              </div>
+              <span class="project-status-badge">✅ Live</span>
+            </div>
+          </article>
+
+          <article class="project-card glass-card reveal delay-3">
+            <div
+              class="project-gradient gradient-pink"
+              aria-hidden="true"
+            ></div>
+            <div class="project-top">
+              <div class="project-icon">
+                <img
+                  src="ap_verses_logo.png"
+                  alt="AP Verses Logo"
+                  class="project-icon-img"
+                />
+              </div>
+              <span class="project-domain-badge domain-literary"
+                >Literary Platform</span
+              >
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">AP Verses</h3>
+              <p class="project-desc">
+                A rich Tamil literary reading platform featuring a highly
+                customizable novel reader, community discussions, dark mode
+                toggle, font scaling, and a complete subscription monetization
+                system.
+              </p>
+              <div class="project-features">
+                <div class="project-feature">
+                  📝 Tamil Novel Reader + Font Control
+                </div>
+                <div class="project-feature">🌙 Dark Mode Support</div>
+                <div class="project-feature">👥 Community Features</div>
+                <div class="project-feature">⭐ Subscription Monetization</div>
+                <div class="project-feature">📱 Android &amp; iOS Released</div>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-row">
+                <span class="proj-chip">React Native</span
+                ><span class="proj-chip">Redux</span
+                ><span class="proj-chip">Subscriptions</span
+                ><span class="proj-chip">Community</span>
+              </div>
+              <span class="project-status-badge">✅ Live</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="counters"
+      class="section counters-section"
+      aria-label="Experience Highlights"
+    >
+      <div class="container">
+        <div class="counters-grid">
+          <div class="counter-card reveal delay-1">
+            <div class="counter-icon">📅</div>
+            <div class="counter-number" data-target="4" data-suffix="+">0</div>
+            <div class="counter-label">Years Experience</div>
+          </div>
+          <div class="counter-card reveal delay-2">
+            <div class="counter-icon">📱</div>
+            <div class="counter-number" data-target="25" data-suffix="+">0</div>
+            <div class="counter-label">Features Delivered</div>
+          </div>
+          <div class="counter-card reveal delay-3">
+            <div class="counter-icon">💻</div>
+            <div class="counter-number" data-target="2" data-suffix="">0</div>
+            <div class="counter-label">Platforms (iOS &amp; Android)</div>
+          </div>
+          <div class="counter-card reveal delay-4">
+            <div class="counter-icon">🚀</div>
+            <div class="counter-number" data-target="15" data-suffix="+">0</div>
+            <div class="counter-label">Apps Deployed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-hire" class="section why-section" aria-label="Why Hire Me">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">05 / Value</span>
+          <h2 class="section-title">Why Work With Me</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="why-grid">
+          <div class="why-card glass-card reveal delay-1">
+            <div class="why-icon">🖌️</div>
+            <h3>Pixel-Perfect UI</h3>
+            <p>
+              I translate Figma designs into precise, beautiful native
+              interfaces. Every shadow, radius, and spacing decision matters to
+              me.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-2">
+            <div class="why-icon purple-icon">⚡</div>
+            <h3>High Performance</h3>
+            <p>
+              Smooth 60fps animations, lazy loading, memoization, and Reanimated
+              worklets. Your users will feel the difference.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-3">
+            <div class="why-icon teal-icon">🌲</div>
+            <h3>Scalable Architecture</h3>
+            <p>
+              Feature-based folder structures, Redux slices, and clean
+              separation of concerns that scale with team size and product
+              complexity.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-4">
+            <div class="why-icon pink-icon">🚀</div>
+            <h3>Production Deployment</h3>
+            <p>
+              Complete App Store &amp; Play Store pipeline — provisioning,
+              certificates, metadata, screenshots, and release management.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-1">
+            <div class="why-icon orange-icon">🔌</div>
+            <h3>API Integration</h3>
+            <p>
+              Deep experience with RESTful APIs, WebSockets, and third-party
+              SDKs. I build robust network layers with proper error handling.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-2">
+            <div class="why-icon yellow-icon">💳</div>
+            <h3>Payment Systems</h3>
+            <p>
+              Stripe subscriptions, in-app purchases, Apple Pay, and Google Pay
+              — integrated and tested in production environments.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-3">
+            <div class="why-icon">🔔</div>
+            <h3>Push Notifications</h3>
+            <p>
+              End-to-end Firebase Cloud Messaging and Apple Push Notification
+              integration with deep link routing on notification tap.
+            </p>
+          </div>
+          <div class="why-card glass-card reveal delay-4">
+            <div class="why-icon purple-icon">💬</div>
+            <h3>Real-time Features</h3>
+            <p>
+              Socket.io-powered live chat, activity feeds, and real-time
+              collaboration — built for scale and reliability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="education"
+      class="section education-section"
+      aria-label="Education"
+    >
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">06 / Education</span>
+          <h2 class="section-title">Academic Background</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="education-grid">
+          <article class="education-card glass-card reveal delay-1">
+            <div class="edu-icon-wrap">🎓</div>
+            <div class="edu-content">
+              <span class="edu-degree">Bachelor of Technology</span>
+              <span class="edu-field">Computer Science &amp; Engineering</span>
+              <span class="edu-school"
+                >🏢 Camellia Institute of Technology</span
+              >
+              <span class="edu-year">📅 2020</span>
+            </div>
+          </article>
+          <article class="education-card glass-card reveal delay-2">
+            <div class="edu-icon-wrap purple-icon">📜</div>
+            <div class="edu-content">
+              <span class="edu-degree">Diploma</span>
+              <span class="edu-field">Computer Science &amp; Technology</span>
+              <span class="edu-school">🏢 Contai Polytechnic</span>
+              <span class="edu-year">📅 2017</span>
+            </div>
+          </article>
+          <article class="education-card glass-card reveal delay-3">
+            <div class="edu-icon-wrap teal-icon">🌐</div>
+            <div class="edu-content">
+              <span class="edu-degree">Languages</span>
+              <span class="edu-field">Multilingual Communication</span>
+              <div class="language-chips">
+                <span class="lang-chip">🇬🇧 English</span>
+                <span class="lang-chip">🇧🇩 Bengali</span>
+                <span class="lang-chip">🇮🇳 Hindi</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section" aria-label="Contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">07 / Contact</span>
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="section-subtitle reveal">
+            Open to new roles, freelance projects, and collaborations. Let's
+            build something remarkable together.
+          </p>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal delay-1">
+            <h3 class="contact-info-title">Get In Touch</h3>
+            <a href="tel:+917063116602" class="contact-item"
+              ><div class="contact-item-icon">📞</div>
+              <div>
+                <span class="contact-item-label">Phone</span
+                ><span class="contact-item-value">+91 7063116602</span>
+              </div></a
+            >
+            <a href="mailto:sahanawaz26ahamad@gmail.com" class="contact-item"
+              ><div class="contact-item-icon">✉️</div>
+              <div>
+                <span class="contact-item-label">Email</span
+                ><span class="contact-item-value"
+                  >sahanawaz26ahamad@gmail.com</span
+                >
+              </div></a
+            >
+            <a
+              href="https://linkedin.com/in/sk-sahanawaz-ahamad-013665133"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-item"
+              ><div class="contact-item-icon linkedin">in</div>
+              <div>
+                <span class="contact-item-label">LinkedIn</span
+                ><span class="contact-item-value"
+                  >sk-sahanawaz-ahamad-013665133</span
+                >
+              </div></a
+            >
+            <a
+              href="https://github.com/Sk-Sahanawaz-Ahamad"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-item"
+              ><div class="contact-item-icon github">GH</div>
+              <div>
+                <span class="contact-item-label">GitHub</span
+                ><span class="contact-item-value">Sk-Sahanawaz-Ahamad</span>
+              </div></a
+            >
+            <div class="contact-item no-link">
+              <div class="contact-item-icon location">📍</div>
+              <div>
+                <span class="contact-item-label">Location</span
+                ><span class="contact-item-value"
+                  >Kolkata, West Bengal, India</span
+                >
+              </div>
+            </div>
+          </div>
+          <form
+            class="contact-form glass-card reveal delay-2"
+            id="contact-form"
+            aria-label="Contact form"
+            novalidate
+          >
+            <h3 class="contact-form-title">Send a Message</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Your Name *</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Jane Smith"
+                  required
+                  autocomplete="name"
+                />
+                <span class="form-error" id="name-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="jane@company.com"
+                  required
+                  autocomplete="email"
+                />
+                <span class="form-error" id="email-error" role="alert"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject *</label>
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                placeholder="React Native Role — Senior Engineer"
+                required
+              />
+              <span class="form-error" id="subject-error" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message *</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Hi SK, I came across your portfolio and would love to discuss an opportunity..."
+                required
+              ></textarea>
+              <span class="form-error" id="message-error" role="alert"></span>
+            </div>
+            <button type="submit" class="btn-primary btn-full" id="btn-send">
+              Send Message &#10148;
+            </button>
+            <div class="form-success" id="form-success" role="status" hidden>
+              ✅ Message received! I'll get back to you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <a href="#hero" class="footer-logo"
+            >&lt;SK<span class="logo-dot">.</span>dev/&gt;</a
+          >
+          <p class="footer-tagline">
+            Building cross-platform mobile experiences that users love.
+          </p>
+          <div class="footer-socials">
+            <a
+              href="https://github.com/Sk-Sahanawaz-Ahamad"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn"
+              aria-label="GitHub"
+              >GH</a
+            >
+            <a
+              href="https://linkedin.com/in/sk-sahanawaz-ahamad-013665133"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn"
+              aria-label="LinkedIn"
+              >in</a
+            >
+            <a
+              href="mailto:sahanawaz26ahamad@gmail.com"
+              class="social-btn"
+              aria-label="Email"
+              >✉</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © <span id="year"></span> <strong>SK Sahanawaz Ahamad</strong> —
+            Senior React Native Developer
+          </p>
+          <p class="footer-made">
+            Crafted with <span class="heart">♥</span> and React Native passion.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      id="scroll-top"
+      class="scroll-top-btn"
+      aria-label="Scroll to top"
+      hidden
+    >
+      ↑
+    </button>
+    <script src="script.js"></script>
   </body>
 </html>
