@@ -295,15 +295,39 @@ function initContactForm() {
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    // Simulate async submit (replace with real API call)
-    setTimeout(() => {
-      form.reset();
-      success.hidden = false;
+    const data = {
+      name: fields.name.el.value,
+      email: fields.email.el.value,
+      _subject: `New Portfolio Message: ${fields.subject.el.value}`,
+      message: fields.message.el.value
+    };
+
+    fetch('https://formsubmit.co/ajax/sahanawaz26ahamad@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        success.hidden = false;
+        // Auto-hide after 6s
+        setTimeout(() => { success.hidden = true; }, 6000);
+      } else {
+        alert('Oops! Something went wrong. Please check details and try again.');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Oops! Connection error. Please check your internet and try again.');
+    })
+    .finally(() => {
       btn.disabled = false;
       btn.innerHTML = 'Send Message &#10148;';
-      // Auto-hide after 6s
-      setTimeout(() => { success.hidden = true; }, 6000);
-    }, 1200);
+    });
   });
 }
 
